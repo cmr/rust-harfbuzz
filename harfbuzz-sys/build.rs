@@ -18,6 +18,9 @@ fn main() {
     }
 
     let mut cfg = cc::Build::new();
+    if target.contains("wasm32") {
+        cfg.cpp_set_stdlib("c++");
+    }
     cfg.cpp(true)
         .flag("-std=c++11")
         .warnings(false)
