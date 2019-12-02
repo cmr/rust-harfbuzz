@@ -50,4 +50,4 @@
 #include "hb-uniscribe.cc"
 #include "hb-gdi.cc"
 #include "hb-directwrite.cc"
-#include "hb-coretext.cc"
+//#include "hb-coretext.cc"

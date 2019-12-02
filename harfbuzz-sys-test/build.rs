@@ -4,6 +4,7 @@ extern crate pkg_config;
 use std::env;
 
 fn main() {
+    let target = env::var("TARGET").unwrap();
     let mut cfg = ctest::TestGenerator::new();
 
     // Get the include paths from harfbuzz-sys or pkg-config.
@@ -20,8 +21,9 @@ fn main() {
     // Include the header files where the C APIs are defined.
     cfg.header("hb.h").header("hb-ot.h").header("hb-aat.h");
 
-    #[cfg(target_os = "macos")]
-    cfg.header("hb-coretext.h");
+    if target.contains("macos") {
+        cfg.header("hb-coretext.h");
+    }
 
     // Skip structs that are empty on the Rust side.
     cfg.skip_struct(|s| {

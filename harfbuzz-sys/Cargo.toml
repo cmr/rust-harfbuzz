@@ -32,7 +32,7 @@ core-text = "13"
 foreign-types = "0.3"
 
 [target.'cfg(any(target_os = "android", all(unix, not(target_vendor = "apple"))))'.dependencies]
-freetype = { version = "0.4", default-features = false }
+freetype = { git = "https://github.com/cmr/rust-freetype", branch="web", default-features = false }
 
 [features]
 default = ["build-native-harfbuzz", "build-native-freetype"]
